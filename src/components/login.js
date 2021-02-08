@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
+import logo from "../images/icon-left-font-monochrome-black.svg"
+
 class Login extends Component {
 
     state = {
@@ -55,24 +57,26 @@ class Login extends Component {
 
     render() {
         return (
-            <div  className='text-center'>
+            <div  className='d-flex flex-column justify-content-center text-center lg-w-50'>
 
-                <h1 className='text-center mb-5'> Groupomania </h1>
+                <h1 className='text-center mb-5'> <img src={logo}/> </h1>
                 
-                <form className='mb-3'>
+                <form className='mb-3 radius-login py-3 col-10 col-lg-4 offset-1 offset-lg-4 bg-login'>
                     <label className='col' for='email'>
                     Adresse mail :
                     </label>
-                    <input onChange={ this.handleChange } className='col-2' type='text' id='email' required></input>
+                    <input onChange={ this.handleChange } className='col-6' type='text' id='email' required></input>
                     <label className='col' for='email'>
                     Mot de passe :
                     </label>
-                    <input onChange={ this.handleChange } className='col-2' type='text' id='password' required></input>
+                    <input onChange={ this.handleChange } className='col-6' type='text' id='password' required></input>
+                    <br/>
+                    <button onClick={ this.handleClick } className='my-3 col-6 col-md-4'>
+                        Se connecter
+                    </button>
                 </form>
 
-                <button onClick={ this.handleClick } className='col-1 mb-3'>
-                    Se connecter
-                </button>
+                
 
                 <Link className='row justify-content-center' to='/signup'>
                     Pas encore de compte? Créez-le maintenant !

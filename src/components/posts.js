@@ -1,8 +1,11 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
+import { Navbar,Nav } from 'react-bootstrap'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 import moment from 'moment'
+
+import logo from "../images/icon-left-font-monochrome-white.svg"
 
 
 
@@ -15,14 +18,20 @@ class Posts extends Component{
         this.state = { posts : [] }
     }
     
+    handleDisconnect = () => {
+        Cookies.remove('userId')
+        Cookies.remove('token')
+        window.location.replace('http://localhost:3000/')
+    }
+
     handleClick = () => {
         document.location.href='http://localhost:3000/posts/newPost'
     }
 
     handleRedirect = () => {
         const userId= Cookies.get('userId')
-        console.log(Cookies.get('userId'))
         window.location.replace(`http://localhost:3000/users/${userId}`)
+        return userId
     }
 
     displayPosts = () => {
@@ -62,17 +71,26 @@ class Posts extends Component{
     }
 
     render() {
+
+        const userId= Cookies.get('userId')
+
         return(
-            <section>
+            <div>
                 <div>
-                    <div className='d-flex justify-content-between align-items-center mx-5'>
-                        <h1 className='text-center mb-5'> Groupomania </h1>
-                        <p onClick={this.handleRedirect}> Mon compte </p>
-                    </div>
+                <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+                    <Navbar.Brand href="/posts/allPosts"><img src={logo} /></Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="ml-auto">
+                            <Nav.Link href={'/users/' + userId}>Mon Compte</Nav.Link>
+                            <Nav.Link onClick={this.handleDisconnect} href="/">Déconnexion</Nav.Link>
+                        </Nav> 
+                    </Navbar.Collapse>
+                </Navbar>
                     <div>
                         {this.state.posts.map( (post) =>                     
                             <div key={post.id}>
-                                <Link to={`/posts/${post.id}`}>
+                                <Link to={`/posts/${post.id}`} className='col-6 offset-3 d-flex flex-column justify-content-center linkstyle'>
                                     <div key={post.id}>
                                         <div className='createdAt'>
                                             Post publié le {moment(post.createdAt).format('DD-MM-YYYY, h:mm')}
@@ -82,6 +100,9 @@ class Posts extends Component{
                                         </div>
                                         <div className='likes'>
                                             {post.likes}
+                                        </div>
+                                        <div className='author'>
+                                            <p>Auteur: {post.user.firstName} {post.user.lastName}</p>
                                         </div>
                                     </div>
                                 </Link>
@@ -95,7 +116,7 @@ class Posts extends Component{
                     
                 </div>
                 
-            </section>
+            </div>
         )
     }
 

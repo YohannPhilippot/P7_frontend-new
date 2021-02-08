@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Navbar,Nav } from 'react-bootstrap'
 import Cookies from 'js-cookie'
 import axios from 'axios'
+
+import logo from "../images/icon-left-font-monochrome-white.svg"
 
 class User extends Component{
 
@@ -12,7 +14,7 @@ class User extends Component{
         this.state = { user : {}}
     }
 
-    handleClick = (e) => {
+    handleDelete = (e) => {
         const token= Cookies.get('token')
         
         const headers = {
@@ -28,7 +30,15 @@ class User extends Component{
             })
     }
 
-   
+    handleModify = () => {
+        window.location.replace(`http://localhost:3000/users/${this.state.user.id}/modify`)
+    }
+
+    handleDisconnect = () => {
+        Cookies.remove('userId')
+        Cookies.remove('token')
+        window.location.replace('http://localhost:3000/')
+    }
 
     displayUser = () => {
 
@@ -45,7 +55,7 @@ class User extends Component{
             .then( res => {
                 const user = res.data
                 this.setState({user})
-                
+                console.log(this.state)
                 
             })
             .catch( err => {
@@ -64,8 +74,8 @@ class User extends Component{
         let deleteButton
         let modifyButton
         if(this.state.user.id == userId ){
-            deleteButton = <button onClick={this.handleClick}> Supprimer le compte </button>
-            modifyButton = <Link  to={`/users/${this.state.user.id}/modify`}> Modifier le profil </Link>
+            deleteButton = <button onClick={this.handleDelete}> Supprimer le compte </button>
+            modifyButton = <button onClick={this.handleModify}> Modifier le profil </button>
         } else {
             deleteButton= null
             modifyButton= null
@@ -73,6 +83,16 @@ class User extends Component{
 
         return(
             <div>
+                <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+                    <Navbar.Brand href="/posts/allPosts"><img src={logo}/></Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="ml-auto">
+                            <Nav.Link href={'/users/' + userId}>Mon Compte</Nav.Link>
+                            <Nav.Link onClick={this.handleDisconnect} href="/">Déconnexion</Nav.Link>
+                        </Nav> 
+                    </Navbar.Collapse>
+                </Navbar>
                 <div>
                     Nom : {this.state.user.lastName}
                 </div>

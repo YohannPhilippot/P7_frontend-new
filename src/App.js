@@ -4,12 +4,14 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom'
 
 import Login from './components/login'
 import Signup from './components/signup'
+import AdminSignup from './components/adminSignup'
 import Posts from './components/posts'
 import Post from './components/post'
 import ModifyPost from './components/modifyPost'
 import NewPost from './components/newPost'
 import User from './components/user'
 import ModifyUser from './components/modifyProfile';
+
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
             <Switch>
                 <Route exact path='/' component={Login} />
                 <Route path='/signup' component={Signup}/>
+                <Route path='/adminSignup' component={AdminSignup} />
                 <Route exact path='/users/:id' component={User} />
                 <Route path='/users/:id/modify' component={ModifyUser} />
                 <Route path='/posts/allPosts' component={Posts}/>

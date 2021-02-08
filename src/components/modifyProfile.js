@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Navbar,Nav } from 'react-bootstrap'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 
@@ -50,6 +51,12 @@ class ModifyUser extends Component {
         }))
     }
 
+    handleDisconnect = () => {
+        Cookies.remove('userId')
+        Cookies.remove('token')
+        window.location.replace('http://localhost:3000/')
+    }
+
     displayUser = () => {
         const token= Cookies.get('token')
         
@@ -78,9 +85,21 @@ class ModifyUser extends Component {
 
     render() {
 
-        return(
+        const userId= Cookies.get('userId')
 
+        return(
+            
             <div>
+                <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+                    <Navbar.Brand href="/posts/allPosts">Groupomania</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="ml-auto">
+                            <Nav.Link href={'/users/' + userId}>Mon Compte</Nav.Link>
+                            <Nav.Link onClick={this.handleDisconnect} href="/">Déconnexion</Nav.Link>
+                        </Nav> 
+                    </Navbar.Collapse>
+                </Navbar>
                 <label className='firstName'> Prénom </label>
                 <input onChange={this.handleChange} type='text' id='firstName' defaultValue={this.state.user.firstName}></input>
 

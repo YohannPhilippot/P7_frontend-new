@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bg-login {
+  background-color: #ffd7d7
+}
+
+.radius-login {
+  border-radius: 25%
+}
+
+.linkstyle {
+  text-decoration: none;
+}

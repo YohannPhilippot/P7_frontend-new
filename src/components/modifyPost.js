@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import { Navbar,Nav } from 'react-bootstrap'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 
-
+import logo from "../images/icon-left-font-monochrome-white.svg"
 
 class Post extends Component {
 
@@ -77,8 +78,21 @@ class Post extends Component {
     }
 
     render() {
+
+        const userId = Cookies.get('userId')
+
         return(
             <div>
+                <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+                    <Navbar.Brand href="/posts/allPosts"><img src={logo}/></Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="ml-auto">
+                            <Nav.Link href={'/users/' + userId}>Mon Compte</Nav.Link>
+                            <Nav.Link onClick={this.handleDisconnect} href="/">Déconnexion</Nav.Link>
+                        </Nav> 
+                    </Navbar.Collapse>
+                </Navbar>
                 <form className="form-flex" key={this.state.post.id}>
 
                     <label className='title'> Titre </label>
