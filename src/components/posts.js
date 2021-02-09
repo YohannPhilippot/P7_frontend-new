@@ -87,13 +87,13 @@ class Posts extends Component{
                             </Nav> 
                         </Navbar.Collapse>
                     </Navbar>
-                    <button className='col-4 offset-4 my-3 bg-button rounded' onClick={this.handleClick}>
+                    <button className='col-lg-4 offset-lg-4 my-3 bg-button rounded' onClick={this.handleClick}>
                         Créer une nouvelle publication
                     </button>
                     <div>
                         {this.state.posts.map( (post) =>                     
                             <div key={post.id}>
-                                <Link to={`/posts/${post.id}`} className='col-6 offset-3 mb-3 d-flex flex-column justify-content-center linkstyle text-dark'>
+                                <Link to={`/posts/${post.id}`} className='col-lg-6 offset-lg-3 mb-3 d-flex flex-column justify-content-center linkstyle text-dark'>
                                     <div key={post.id}>
                                         <div className='createdAt'>
                                             Post publié le {moment(post.createdAt).format('DD-MM-YYYY, h:mm')}

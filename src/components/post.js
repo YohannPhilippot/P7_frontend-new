@@ -87,7 +87,7 @@ class Post extends Component {
         }
         
         if(this.state.post.medias !== 'undefined') {
-            medias = <div className='medias my-5'>
+            medias = <div className='medias text-center my-5'>
                         <img className='mw-100' src={`/images/${this.state.post.medias}`}/>
                     </div>
         } else {

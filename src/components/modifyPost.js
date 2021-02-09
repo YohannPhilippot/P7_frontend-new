@@ -118,19 +118,19 @@ class Post extends Component {
                         </Nav> 
                     </Navbar.Collapse>
                 </Navbar>
-                <h1 className='col-10 col-lg-4 offset-1 offset-lg-4 text-center my-3'>Modifier la publication</h1>
+                <h1 className='col col-lg-6 offset-lg-3 text-center my-3'>Modifier la publication</h1>
                 <form className="mt-5 col-lg-6 offset-lg-3 titleAuthor shadow-lg py-2" key={this.state.post.id}>
 
                     <label className='title col-6 offset-3 pt-3'> Titre </label>
-                    <input className='col-6 offset-3' onChange={this.handleChange} type='text' id='title' defaultValue={this.state.post.title}></input>
+                    <input className='col-10 offset-1 col-lg-6 offset-lg-3' onChange={this.handleChange} type='text' id='title' defaultValue={this.state.post.title}/>
 
                     <label className='postContent col-6 offset-3 pt-3'>Contenu de la publication</label>
-                    <input className='col-6 offset-3' onChange={this.handleChange} type='text' id='content' defaultValue={this.state.post.content}></input>
+                    <textarea className='col-10 offset-1 col-lg-6 offset-lg-3' onChange={this.handleChange} type='text' id='content' defaultValue={this.state.post.content}/>
 
                     <label className='medias col-6 offset-3 pt-3'>Medias</label>
-                    <input className='col-6 offset-3' onChange={this.handleChange} type='text' id='medias' defaultValue={this.state.post.medias}></input>
+                    <input className='col-10 offset-1 col-lg-6 offset-lg-3' onChange={this.handleChange} type='text' id='medias' defaultValue={this.state.post.medias}/>
                     <form encType='multipart/form-data' method='post'>
-                        <input className='col-6 offset-3 mt-3' onChange={this.handleFileChange} type='file' name='file' id='medias'></input>
+                        <input className='col-4 col-lg-6 offset-1 offset-md-3 mt-4' onChange={this.handleFileChange} type='file' name='file' id='medias'/>
                     </form>
                     
                     <button className='col-6 offset-3 my-5 bg-button rounded' onClick={this.handleClick} type='button'>

@@ -102,7 +102,7 @@ class ModifyUser extends Component {
                         </Nav> 
                     </Navbar.Collapse>
                 </Navbar>
-                <h1 className='col-10 col-lg-4 offset-1 offset-lg-4 text-center my-3'>Modifier le profil</h1>
+                <h1 className='col col-lg-4 offset-lg-4 text-center my-3'>Modifier le profil</h1>
                 <form className="mt-5 col-lg-6 offset-lg-3 titleAuthor shadow-lg py-2">
                     <label className='firstName col-6 offset-3 pt-3'> Prénom </label>
                     <input className='col-6 offset-3' onChange={this.handleChange} type='text' id='firstName' defaultValue={this.state.user.firstName}></input>

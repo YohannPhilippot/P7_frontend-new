@@ -74,8 +74,8 @@ class User extends Component{
         let deleteButton
         let modifyButton
         if(this.state.user.id == userId ){
-            deleteButton = <button className='col-8 col-md-6 offset-2 offset-md-3 my-2 bg-button rounded' onClick={this.handleDelete}> Supprimer le compte </button>
-            modifyButton = <button className='col-8 col-md-6 offset-2 offset-md-3 my-2 bg-button rounded' onClick={this.handleModify}> Modifier le profil </button>
+            deleteButton = <button className='col-8 offset-2 my-2 bg-button rounded' onClick={this.handleDelete}> Supprimer le compte </button>
+            modifyButton = <button className='col-8 offset-2 my-2 bg-button rounded' onClick={this.handleModify}> Modifier le profil </button>
         } else {
             deleteButton= null
             modifyButton= null
@@ -93,7 +93,7 @@ class User extends Component{
                         </Nav> 
                     </Navbar.Collapse>
                 </Navbar>
-                <h1 className='col-10 col-lg-4 offset-1 offset-lg-4 text-center' >Mon Compte</h1>
+                <h1 className='col col-lg-4 offset-lg-4 text-center' >Mon Compte</h1>
                 <div className='mb-3 py-3 col-10 col-lg-4 offset-1 offset-lg-4 bg-login'>
                     <div className='col my-3'>
                         Nom : {this.state.user.lastName}
