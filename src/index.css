@@ -47,6 +47,6 @@ code {
 }
 
 .areaHeight {
-  padding: 30px 10px;
+  min-height: 150px;
 }
 

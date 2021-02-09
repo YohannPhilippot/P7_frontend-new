@@ -98,10 +98,10 @@ class NewPost extends Component{
                 <h2 className='col-lg-6 offset-lg-3 text-center' >Créer une nouvelle publication</h2>
                 <form className='d-flex flex-column justify-content-center rounded shadow-lg mb-3 py-3 col-10 col-lg-4 offset-1 offset-lg-4 bg-login'>
                     <label className='col'> Titre </label>
-                    <input className='col mb-3' onChange={this.handleChange} type='text' id='title'></input>
+                    <input className='col mb-3' onChange={this.handleChange} type='text' id='title' required/>
 
                     <label className='col'> Contenu de la publication </label>
-                    <textarea className='col mb-3 areaHeight' rows='5' onChange={this.handleChange} type='text' id='content'/>
+                    <textarea className='col mb-3 areaHeight' onChange={this.handleChange} type='text' id='content' required/>
 
                     <label className='col'> Medias </label>
                     <form encType='multipart/form-data' method='post'>

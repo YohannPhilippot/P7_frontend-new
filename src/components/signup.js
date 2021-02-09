@@ -13,7 +13,42 @@ class Signup extends Component {
         isModerator: false
     }
 
+    valid(input, regex, smallInner) {
+        let regEx = new RegExp(
+            regex, 'g'
+        )
+        const result = regEx.test(input.value)
+        
+        let br = input.nextElementSibling
+        let small = br.nextElementSibling
+        
+        if (result) {
+            input.classList.remove('bg-danger')
+            small.innerHTML = null               
+            
+        } else {
+            input.classList.add('bg-danger')
+            small.innerHTML = smallInner         
+        }
+       
+    }
+
     handleChange = (e) => {
+        let regex 
+        let validMessage
+        let input = e.target
+         if (input.id == 'firstName' || input.id == 'lastName') {
+            regex = '^[a-zA-Z\u00C0-\u017F.,\-]+$'
+            validMessage = 'Caractères acceptés: minuscules, majuscules . , -'
+            this.valid(input, regex, validMessage)
+        } else if (input.id == 'email') {
+            regex = '^[0-9a-zA-Z\u00C0-\u017F.,\-]+[@]{1}[0-9a-zA-Z,\-]+[.]{1}[a-zA-Z]{1,10}$'
+            validMessage = 'Veuillez entrer une adresse mail valide !'
+            this.valid(input, regex, validMessage)
+        }
+
+        
+
         const { id, value } = e.target
         this.setState(prevState => ({
             ...prevState,
@@ -53,14 +88,23 @@ class Signup extends Component {
                         Prénom :
                     </label>
                     <input onChange={this.handleChange} className='col-6' type='text' id='firstName' value={this.state.firstName} required></input>
+                    <br/>
+                    <small className='col-6 text-danger'></small>
+                    <br/>
                     <label className='col' for='lastName'>
                         Nom :
                     </label>
                     <input onChange={this.handleChange} className='col-6' type='text' id='lastName' value={this.state.lastName} required></input>
+                    <br/>
+                    <small className='col-6 text-danger'></small>
+                    <br/>
                     <label className='col' for='email'>
                     Adresse mail :
                     </label>
                     <input onChange={this.handleChange} className='col-6' type='text' id='email' value={this.state.email} required></input>
+                    <br/>
+                    <small className='col-6 text-danger'></small>
+                    <br/>
                     <label className='col' for='email'>
                     Mot de passe :
                     </label>

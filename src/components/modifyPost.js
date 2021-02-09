@@ -11,16 +11,20 @@ class Post extends Component {
 
         super(props)
 
-        this.state = { post : {} }
+        this.state = { post : {}, medias:''}
     }
 
     handleClick = () => {
-        const data = {
-            'id' : this.state.post.id,
-            'title': this.state.post.title,
-            'content': this.state.post.content,
-            'medias': this.state.post.medias
-        }
+        const formData = new FormData()
+
+        formData.append('id', this.state.post.id)
+        formData.append('title', this.state.post.title)
+        formData.append('content', this.state.post.content)
+        formData.append('medias', this.state.post.medias)
+        formData.append('likes', this.state.post.likes)
+        formData.append('dislikes', this.state.post.dislikes)
+        formData.append('userId', this.state.post.userId)
+        formData.append('image', this.state.medias)
 
         const token= Cookies.get('token')
         
@@ -30,14 +34,35 @@ class Post extends Component {
             }
         }
 
-        axios.put(`http://localhost:8080/api/posts/${this.props.match.params.id}`, data, headers)
+        axios.put(`http://localhost:8080/api/posts/${this.props.match.params.id}`, formData, headers)
             .then( res => {
                 console.log(res)
-                window.location.replace('http://localhost:3000/posts/allPosts')
+                window.location.replace(`http://localhost:3000/posts/${this.state.post.id}`)
             })
             .catch( err => {
                 new Error(err)
             })
+    }
+
+    handleFileChange = (e) => {
+        
+        this.setState(prevState => ({
+            ...prevState,
+            post: {
+                title: this.state.post.title,
+                content:this.state.post.content,
+                medias: e.target.files[0].name,
+                id: this.state.post.id,
+                userId: this.state.post.userId,
+                likes:this.state.post.likes,
+                dislikes: this.state.post.dislikes
+            },
+            medias:e.target.files[0]
+
+        }))
+        console.log(e.target.files[0].name)
+        console.log(this.state.post)
+        
     }
 
     handleChange = (e) => {
@@ -104,7 +129,9 @@ class Post extends Component {
 
                     <label className='medias col-6 offset-3 pt-3'>Medias</label>
                     <input className='col-6 offset-3' onChange={this.handleChange} type='text' id='medias' defaultValue={this.state.post.medias}></input>
-         
+                    <form encType='multipart/form-data' method='post'>
+                        <input className='col-6 offset-3 mt-3' onChange={this.handleFileChange} type='file' name='file' id='medias'></input>
+                    </form>
                     
                     <button className='col-6 offset-3 my-5 bg-button rounded' onClick={this.handleClick} type='button'>
                         Modifier la publication 

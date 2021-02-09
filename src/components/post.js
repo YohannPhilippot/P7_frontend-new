@@ -13,7 +13,7 @@ class Post extends Component {
 
         super(props)
 
-        this.state = { post : {}, currentUserId:'', user: {} }
+        this.state = { post : {}, currentUserId: Cookies.get('userId'), user: {} }
     }
 
     handleCLick = (e) => {
@@ -52,7 +52,7 @@ class Post extends Component {
                 console.log(this.state.post.medias)
             })
         
-        this.state.currentUserId = Cookies.get('userId')
+        
 
         axios.get(`http://localhost:8080/api/users/${this.state.currentUserId}`)
             .then( res => {
@@ -72,6 +72,8 @@ class Post extends Component {
 
         let deleteButton
         let modifyButton
+        let medias
+        
         if(this.state.post.userId == this.state.currentUserId || this.state.user.isModerator){
             deleteButton = <button className='col-8 col-md-6 offset-2 offset-md-3 my-2 bg-button rounded' onClick={this.handleCLick}>Supprimer la publication</button>
             modifyButton = <Link to={`/posts/${this.state.post.id}/modify`}>
@@ -84,6 +86,14 @@ class Post extends Component {
             modifyButton= null
         }
         
+        if(this.state.post.medias !== 'undefined') {
+            medias = <div className='medias my-5'>
+                        <img className='mw-100' src={`/images/${this.state.post.medias}`}/>
+                    </div>
+        } else {
+            medias = null
+        }
+
         return(
             <div>
                 <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
@@ -106,9 +116,7 @@ class Post extends Component {
                         {this.state.post.content}
                     </div>
                     
-                    <div className='medias my-5'>
-                        <img className='mw-100' src={`/images/${this.state.post.medias}`}/>
-                    </div>
+                    {medias}
                     {modifyButton}
                     <br/>
                     {deleteButton}
