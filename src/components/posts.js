@@ -77,42 +77,43 @@ class Posts extends Component{
         return(
             <div>
                 <div>
-                <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-                    <Navbar.Brand href="/posts/allPosts"><img src={logo} /></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ml-auto">
-                            <Nav.Link href={'/users/' + userId}>Mon Compte</Nav.Link>
-                            <Nav.Link onClick={this.handleDisconnect} href="/">Déconnexion</Nav.Link>
-                        </Nav> 
-                    </Navbar.Collapse>
-                </Navbar>
+                    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+                        <Navbar.Brand href="/posts/allPosts"><img src={logo} alt='logo groupomania' /></Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="ml-auto">
+                                <Nav.Link href={'/users/' + userId}>Mon Compte</Nav.Link>
+                                <Nav.Link onClick={this.handleDisconnect} href="/">Déconnexion</Nav.Link>
+                            </Nav> 
+                        </Navbar.Collapse>
+                    </Navbar>
+                    <button className='col-4 offset-4 my-3 bg-button rounded' onClick={this.handleClick}>
+                        Créer une nouvelle publication
+                    </button>
                     <div>
                         {this.state.posts.map( (post) =>                     
                             <div key={post.id}>
-                                <Link to={`/posts/${post.id}`} className='col-6 offset-3 d-flex flex-column justify-content-center linkstyle'>
+                                <Link to={`/posts/${post.id}`} className='col-6 offset-3 mb-3 d-flex flex-column justify-content-center linkstyle text-dark'>
                                     <div key={post.id}>
                                         <div className='createdAt'>
                                             Post publié le {moment(post.createdAt).format('DD-MM-YYYY, h:mm')}
                                         </div>
-                                        <div className='title'>
-                                            <h2> {post.title} </h2>
+                                        <div className='titleAuthor shadow-lg px-2'>
+                                            <div className='title '>
+                                                <h2 className='mb-1 mt-2'> {post.title} </h2>
+                                            </div>
+                                            <div className='author'>
+                                                <p>Auteur: {post.user.firstName} {post.user.lastName}</p>
+                                            </div>
                                         </div>
-                                        <div className='likes'>
-                                            {post.likes}
-                                        </div>
-                                        <div className='author'>
-                                            <p>Auteur: {post.user.firstName} {post.user.lastName}</p>
-                                        </div>
+                                        
                                     </div>
                                 </Link>
                             </div>
                         )}
                     </div>
                     
-                    <button onClick={this.handleClick}>
-                        Créer une nouvelle publication
-                    </button>
+                    
                     
                 </div>
                 

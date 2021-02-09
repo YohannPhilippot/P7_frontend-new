@@ -84,7 +84,7 @@ class Post extends Component {
         return(
             <div>
                 <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-                    <Navbar.Brand href="/posts/allPosts"><img src={logo}/></Navbar.Brand>
+                    <Navbar.Brand href="/posts/allPosts"><img src={logo} alt='logo groupomania'/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ml-auto">
@@ -93,19 +93,20 @@ class Post extends Component {
                         </Nav> 
                     </Navbar.Collapse>
                 </Navbar>
-                <form className="form-flex" key={this.state.post.id}>
+                <h1 className='col-10 col-lg-4 offset-1 offset-lg-4 text-center my-3'>Modifier la publication</h1>
+                <form className="mt-5 col-lg-6 offset-lg-3 titleAuthor shadow-lg py-2" key={this.state.post.id}>
 
-                    <label className='title'> Titre </label>
-                    <input onChange={this.handleChange} type='text' id='title' defaultValue={this.state.post.title}></input>
+                    <label className='title col-6 offset-3 pt-3'> Titre </label>
+                    <input className='col-6 offset-3' onChange={this.handleChange} type='text' id='title' defaultValue={this.state.post.title}></input>
 
-                    <label className='postContent'>Contenu de la publication</label>
-                    <input onChange={this.handleChange} type='text' id='content' defaultValue={this.state.post.content}></input>
+                    <label className='postContent col-6 offset-3 pt-3'>Contenu de la publication</label>
+                    <input className='col-6 offset-3' onChange={this.handleChange} type='text' id='content' defaultValue={this.state.post.content}></input>
 
-                    <label className='medias'>Medias</label>
-                    <input onChange={this.handleChange} type='text' id='medias' defaultValue={this.state.post.medias}></input>
+                    <label className='medias col-6 offset-3 pt-3'>Medias</label>
+                    <input className='col-6 offset-3' onChange={this.handleChange} type='text' id='medias' defaultValue={this.state.post.medias}></input>
          
                     
-                    <button onClick={this.handleClick} type='button'>
+                    <button className='col-6 offset-3 my-5 bg-button rounded' onClick={this.handleClick} type='button'>
                         Modifier la publication 
                     </button>
                     

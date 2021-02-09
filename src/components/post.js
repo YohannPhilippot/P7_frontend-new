@@ -48,7 +48,8 @@ class Post extends Component {
         axios.get(`http://localhost:8080/api/posts/${this.props.match.params.id}`, headers)
             .then( res => {
                 const post = res.data
-                this.setState({post})     
+                this.setState({post})
+                console.log(this.state.post.medias)
             })
         
         this.state.currentUserId = Cookies.get('userId')
@@ -72,9 +73,9 @@ class Post extends Component {
         let deleteButton
         let modifyButton
         if(this.state.post.userId == this.state.currentUserId || this.state.user.isModerator){
-            deleteButton = <button onClick={this.handleCLick}>Supprimer la publication</button>
+            deleteButton = <button className='col-8 col-md-6 offset-2 offset-md-3 my-2 bg-button rounded' onClick={this.handleCLick}>Supprimer la publication</button>
             modifyButton = <Link to={`/posts/${this.state.post.id}/modify`}>
-                                <button>
+                                <button className='col-8 col-md-6 offset-2 offset-md-3 my-2 bg-button rounded'>
                                     Modifier la publication 
                                 </button>
                             </Link>
@@ -86,7 +87,7 @@ class Post extends Component {
         return(
             <div>
                 <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-                    <Navbar.Brand href="/posts/allPosts"><img src={logo}/></Navbar.Brand>
+                    <Navbar.Brand href="/posts/allPosts"><img src={logo} alt='logo groupomania'/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ml-auto">
@@ -95,20 +96,21 @@ class Post extends Component {
                         </Nav> 
                     </Navbar.Collapse>
                 </Navbar>
-                <div key={this.state.post.id}>
+                <div className='mt-5 col-lg-6 offset-lg-3 titleAuthor shadow-lg px-2' key={this.state.post.id}>
 
                     <div className='title'>
                         <h2> {this.state.post.title} </h2>
                     </div>
 
-                    <div className='postContent'>
+                    <div className='postContent py-3'>
                         {this.state.post.content}
                     </div>
                     
-                    <div className='medias'>
-                        {this.state.post.medias}
+                    <div className='medias my-5'>
+                        <img className='mw-100' src={`/images/${this.state.post.medias}`}/>
                     </div>
                     {modifyButton}
+                    <br/>
                     {deleteButton}
                 </div>
 

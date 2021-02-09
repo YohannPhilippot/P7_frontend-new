@@ -74,8 +74,8 @@ class User extends Component{
         let deleteButton
         let modifyButton
         if(this.state.user.id == userId ){
-            deleteButton = <button onClick={this.handleDelete}> Supprimer le compte </button>
-            modifyButton = <button onClick={this.handleModify}> Modifier le profil </button>
+            deleteButton = <button className='col-8 col-md-6 offset-2 offset-md-3 my-2 bg-button rounded' onClick={this.handleDelete}> Supprimer le compte </button>
+            modifyButton = <button className='col-8 col-md-6 offset-2 offset-md-3 my-2 bg-button rounded' onClick={this.handleModify}> Modifier le profil </button>
         } else {
             deleteButton= null
             modifyButton= null
@@ -84,7 +84,7 @@ class User extends Component{
         return(
             <div>
                 <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-                    <Navbar.Brand href="/posts/allPosts"><img src={logo}/></Navbar.Brand>
+                    <Navbar.Brand href="/posts/allPosts"><img src={logo} alt='logo groupomania'/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ml-auto">
@@ -93,17 +93,22 @@ class User extends Component{
                         </Nav> 
                     </Navbar.Collapse>
                 </Navbar>
-                <div>
-                    Nom : {this.state.user.lastName}
+                <h1 className='col-10 col-lg-4 offset-1 offset-lg-4 text-center' >Mon Compte</h1>
+                <div className='mb-3 py-3 col-10 col-lg-4 offset-1 offset-lg-4 bg-login'>
+                    <div className='col my-3'>
+                        Nom : {this.state.user.lastName}
+                    </div>
+                    <div className='col my-3'>
+                        Prénom: {this.state.user.firstName}
+                    </div>
+                    <div className='col my-3'>
+                        Adresse mail: {this.state.user.email}
+                    </div>
+                    {modifyButton}
+                    <br/>
+                    {deleteButton}
                 </div>
-                <div>
-                    Prénom: {this.state.user.firstName}
-                </div>
-                <div>
-                    Adresse mail: {this.state.user.email}
-                </div>
-                {modifyButton}
-                {deleteButton}
+                
             </div>
         )
     }

@@ -3,6 +3,8 @@ import { Navbar,Nav } from 'react-bootstrap'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 
+import logo from "../images/icon-left-font-monochrome-white.svg"
+
 class NewPost extends Component{
 
     constructor(props) {
@@ -34,21 +36,6 @@ class NewPost extends Component{
         
     }
     
-    handleFileUpload = (e) => {
-        e.preventDefault()
-        const formData = new FormData()
-        formData.append('file', this.state.medias)
-        console.log(formData.append('file', this.state.medias))
-        console.log(this.state.medias)
-        const data = 'bonjour'
-        axios.post('http://localhost:8080/api/posts/newImage', data)
-            .then(res => {
-                console.log(res)
-            })
-            .catch( err => {
-                console.log(err)
-            })
-    }
 
     handleChange = (e) => {
 
@@ -63,15 +50,17 @@ class NewPost extends Component{
 
     handleClick = () => {
 
-        const data= {
-            'id' : this.state.id,
-            'title': this.state.title,
-            'content': this.state.content,
-            'medias': this.state.medias.name,
-            'likes': this.state.likes,
-            'dislikes': this.state.dislikes,
-            'userId' : this.state.userId,
-        }
+        
+        const formData = new FormData()
+
+        formData.append('id', this.state.id)
+        formData.append('title', this.state.title)
+        formData.append('content', this.state.content)
+        formData.append('medias', this.state.medias.name)
+        formData.append('likes', this.state.likes)
+        formData.append('dislikes', this.state.dislikes)
+        formData.append('userId', this.state.userId)
+        formData.append('image', this.state.medias)
 
         const token= Cookies.get('token')
         
@@ -81,9 +70,9 @@ class NewPost extends Component{
             }
         }
 
-        axios.post('http://localhost:8080/api/posts/newPost', data, headers)
+        axios.post('http://localhost:8080/api/posts/newPost', formData, headers)
             .then(
-                //document.location.href='http://localhost:3000/posts/allPosts'
+                document.location.href='http://localhost:3000/posts/allPosts'
                 )
             .catch( err => {
                 new Error(err)
@@ -97,7 +86,7 @@ class NewPost extends Component{
         return(
             <div>
                 <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-                    <Navbar.Brand href="/posts/allPosts">Groupomania</Navbar.Brand>
+                    <Navbar.Brand href="/posts/allPosts"><img src={logo} alt='logo groupomania'/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ml-auto">
@@ -106,24 +95,20 @@ class NewPost extends Component{
                         </Nav> 
                     </Navbar.Collapse>
                 </Navbar>
-                <h2>Créer une nouvelle publication</h2>
-                <form>
-                    <label> Titre </label>
-                    <input onChange={this.handleChange} type='text' id='title'></input>
+                <h2 className='col-lg-6 offset-lg-3 text-center' >Créer une nouvelle publication</h2>
+                <form className='d-flex flex-column justify-content-center rounded shadow-lg mb-3 py-3 col-10 col-lg-4 offset-1 offset-lg-4 bg-login'>
+                    <label className='col'> Titre </label>
+                    <input className='col mb-3' onChange={this.handleChange} type='text' id='title'></input>
 
-                    <label> Contenu de la publication </label>
-                    <input onChange={this.handleChange} type='text' id='content'></input>
+                    <label className='col'> Contenu de la publication </label>
+                    <textarea className='col mb-3 areaHeight' rows='5' onChange={this.handleChange} type='text' id='content'/>
 
-                    <label> Medias </label>
+                    <label className='col'> Medias </label>
                     <form encType='multipart/form-data' method='post'>
                         <input onChange={this.handleFileChange} type='file' name='file' id='medias'></input>
-                    
-                    
-                    
-                        <button type='submit' onClick={this.handleFileUpload}> Confirmer le fichier </button>
                     </form>
                 </form>
-                <button onClick={this.handleClick}> Créer la publication </button>
+                <button className='col-6 col-lg-2 offset-3 offset-lg-5 my-3 bg-button rounded' onClick={this.handleClick}> Créer la publication </button>
 
                 
 

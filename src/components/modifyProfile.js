@@ -3,6 +3,8 @@ import { Navbar,Nav } from 'react-bootstrap'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 
+import logo from "../images/icon-left-font-monochrome-white.svg"
+
 class ModifyUser extends Component {
 
     constructor(props) {
@@ -91,7 +93,7 @@ class ModifyUser extends Component {
             
             <div>
                 <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-                    <Navbar.Brand href="/posts/allPosts">Groupomania</Navbar.Brand>
+                    <Navbar.Brand href="/posts/allPosts"><img src={logo} alt='logo groupomania'/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ml-auto">
@@ -100,16 +102,20 @@ class ModifyUser extends Component {
                         </Nav> 
                     </Navbar.Collapse>
                 </Navbar>
-                <label className='firstName'> Prénom </label>
-                <input onChange={this.handleChange} type='text' id='firstName' defaultValue={this.state.user.firstName}></input>
+                <h1 className='col-10 col-lg-4 offset-1 offset-lg-4 text-center my-3'>Modifier le profil</h1>
+                <form className="mt-5 col-lg-6 offset-lg-3 titleAuthor shadow-lg py-2">
+                    <label className='firstName col-6 offset-3 pt-3'> Prénom </label>
+                    <input className='col-6 offset-3' onChange={this.handleChange} type='text' id='firstName' defaultValue={this.state.user.firstName}></input>
 
-                <label className='lastName'> Nom </label>
-                <input onChange={this.handleChange} type='text' id='lastName' defaultValue={this.state.user.lastName}></input>
+                    <label className='lastName col-6 offset-3 pt-3'> Nom </label>
+                    <input className='col-6 offset-3' onChange={this.handleChange} type='text' id='lastName' defaultValue={this.state.user.lastName}></input>
 
-                <label className='email'> Adresse Mail </label>
-                <input onChange={this.handleChange} type='text' id='email' defaultValue={this.state.user.email}></input>
+                    <label className='email col-6 offset-3 pt-3'> Adresse Mail </label>
+                    <input className='col-6 offset-3' onChange={this.handleChange} type='text' id='email' defaultValue={this.state.user.email}></input>
 
-                <button onClick={this.handleClick} type='button'> Valider les modifications </button>
+                    <button className='col-6 offset-3 my-5 bg-button rounded' onClick={this.handleClick} type='button'> Valider les modifications </button>
+                </form>
+                
             </div>
 
         )

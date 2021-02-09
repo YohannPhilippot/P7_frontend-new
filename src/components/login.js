@@ -59,7 +59,7 @@ class Login extends Component {
         return (
             <div  className='d-flex flex-column justify-content-center text-center lg-w-50'>
 
-                <h1 className='text-center mb-5'> <img src={logo}/> </h1>
+                <h1 className='text-center mb-5'> <img src={logo} alt='logo groupomania'/> </h1>
                 
                 <form className='mb-3 radius-login py-3 col-10 col-lg-4 offset-1 offset-lg-4 bg-login'>
                     <label className='col' for='email'>
@@ -71,7 +71,7 @@ class Login extends Component {
                     </label>
                     <input onChange={ this.handleChange } className='col-6' type='text' id='password' required></input>
                     <br/>
-                    <button onClick={ this.handleClick } className='my-3 col-6 col-md-4'>
+                    <button onClick={ this.handleClick } className='my-3 col-6 col-md-4 bg-button rounded'>
                         Se connecter
                     </button>
                 </form>
