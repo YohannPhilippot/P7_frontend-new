@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import logo from "../images/icon-left-font-monochrome-black.svg"
@@ -67,7 +68,7 @@ class Signup extends Component {
 
         axios.post('http://localhost:8080/api/users/signup', data)
             .then(
-                window.location.replace('http://localhost:3000/posts/allPosts')
+                window.location.replace('http://localhost:3000/')
             )
             .catch( err => {
                 console.log(err)
@@ -115,7 +116,9 @@ class Signup extends Component {
                     </button>
                 </form>
 
-                
+                <Link className='row justify-content-center' to='/'>
+                    Déjà un compte ? Connectez-vous !
+                </Link>
         
             </div>
         )

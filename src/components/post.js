@@ -16,6 +16,12 @@ class Post extends Component {
         this.state = { post : {}, currentUserId: Cookies.get('userId'), user: {} }
     }
 
+    handleDisconnect = () => {
+        Cookies.remove('userId')
+        Cookies.remove('token')
+        window.location.replace('http://localhost:3000/')
+    }
+    
     handleCLick = (e) => {
         const token= Cookies.get('token')
         

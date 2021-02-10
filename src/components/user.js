@@ -24,7 +24,7 @@ class User extends Component{
         }
 
         axios.delete(`http://localhost:8080/api/users/${this.props.match.params.id}`, headers)
-            .then(window.location.replace('http://localhost:3000/signup'))
+            .then(window.location.replace('http://localhost:3000/'))
             .catch( err => {
                 new Error(err)
             })

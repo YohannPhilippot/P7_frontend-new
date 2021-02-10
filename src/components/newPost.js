@@ -24,6 +24,12 @@ class NewPost extends Component{
         }
     }
 
+    handleDisconnect = () => {
+        Cookies.remove('userId')
+        Cookies.remove('token')
+        window.location.replace('http://localhost:3000/')
+    }
+
     handleFileChange = (e) => {
 
         this.setState({

@@ -64,7 +64,7 @@ class Posts extends Component{
         
     }
     
-    componentWillMount() {
+    componentDidMount() {
         this.displayPosts()
         
         
