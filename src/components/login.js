@@ -97,24 +97,24 @@ class Login extends Component {
 
     render() {
         return (
-            <div  className='d-flex flex-column justify-content-center text-center lg-w-50'>
+            <div  className='d-flex flex-column text-center lg-w-50 loginpage'>
 
-                <h1 className='text-center mb-5'> <img src={logo} alt='logo groupomania'/> </h1>
-                <h2> Connectez-vous : </h2>
-                <form className='mb-3 radius-login py-3 col-10 col-lg-4 offset-1 offset-lg-4 bg-login'>
+                <h1 className='text-center w-100 py-3 mb-5 header'> <img src={logo} alt='logo groupomania'/> </h1>
+                <h2 className='mb-5 white'> Connectez-vous : </h2>
+                <form className='mb-5 radius-login py-3 col-10 col-lg-4 offset-1 offset-lg-4 bg-login'>
                     <label className='col' for='email'>
                     Adresse mail :
                     </label>
-                    <input onChange={ this.handleChange } className='col-6' type='text' id='email' required></input>
+                    <input onChange={ this.handleChange } className='col-8 inputBorder shadow-lg' type='text' id='email' required></input>
                     <br/>
                     <small className='col-6 text-danger'></small>
                     <br/>
                     <label className='col' for='email'>
                     Mot de passe :
                     </label>
-                    <input onChange={ this.handleChange } className='col-6' type='password' id='password' required></input>
+                    <input onChange={ this.handleChange } className='col-8 inputBorder shadow-lg' type='password' id='password' required></input>
                     <br/>
-                    <button onClick={ this.handleClick } className='my-3 col-6 col-md-4 bg-button rounded' id='connectButton'>
+                    <button onClick={ this.handleClick } className='my-3 col-6 col-md-4 bg-button' id='connectButton'>
                         Se connecter
                     </button>
                     <br/>
@@ -124,7 +124,7 @@ class Login extends Component {
 
                 
 
-                <Link className='row justify-content-center' to='/signup'>
+                <Link className='row justify-content-center redirectLink' to='/signup'>
                     Pas encore de compte? Créez-le maintenant !
                 </Link>
         
