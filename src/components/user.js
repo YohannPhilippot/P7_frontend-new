@@ -74,8 +74,8 @@ class User extends Component{
         let deleteButton
         let modifyButton
         if(this.state.user.id == userId ){
-            deleteButton = <button className='col-8 offset-2 my-2 bg-delete-button' onClick={this.handleDelete}> Supprimer le compte </button>
-            modifyButton = <button className='col-8 offset-2 my-2 bg-post-button' onClick={this.handleModify}> Modifier le profil </button>
+            deleteButton = <button className='col-8 offset-2 my-2 bg-button bg-button--delete' onClick={this.handleDelete}> Supprimer le compte </button>
+            modifyButton = <button className='col-8 offset-2 my-2 bg-button bg-button--post' onClick={this.handleModify}> Modifier le profil </button>
         } else {
             deleteButton= null
             modifyButton= null
@@ -88,13 +88,13 @@ class User extends Component{
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ml-auto">
-                            <Nav.Link href={'/users/' + userId}>Mon Compte</Nav.Link>
-                            <Nav.Link onClick={this.handleDisconnect} href="/">Déconnexion</Nav.Link>
+                            <Nav.Link className='white' href={'/users/' + userId}>Mon Compte</Nav.Link>
+                            <Nav.Link className='white' onClick={this.handleDisconnect} href="/">Déconnexion</Nav.Link>
                         </Nav> 
                     </Navbar.Collapse>
                 </Navbar>
                 <div className='loginpage'>
-                    <h1 className='col col-lg-4 offset-lg-4 text-center pt-4 mb-3' >Mon Compte</h1>
+                    <h1 className='col col-lg-4 offset-lg-4 text-center pt-4 mb-3 white' >Mon Compte</h1>
                     <div className='mb-3 py-3 col-10 col-lg-4 offset-1 offset-lg-4 bg-login radius2'>
                         <div className='col my-3'>
                             <span className='bold'>Nom :</span> {this.state.user.lastName}

@@ -87,10 +87,10 @@ class Posts extends Component{
                             </Nav> 
                         </Navbar.Collapse>
                     </Navbar>
-                    <button className='col-lg-4 offset-lg-4 my-5 bg-post-button' onClick={this.handleClick}>
+                    <button className='col-lg-4 offset-lg-4 my-5 bg-button bg-button--post' onClick={this.handleClick}>
                         Créer une nouvelle publication
                     </button>
-                    <div className='loginpage radius2 py-5 mx-5 postsShadow mb2'>
+                    <div className='loginpage radius2 py-5 mx-5 postsShadow mb2 borderBlack'>
                         {this.state.posts.map( (post) =>                     
                             <div className='mb2' key={post.id}>
                                 <Link to={`/posts/${post.id}`} className='col-lg-6 offset-lg-3 mb-3 d-flex flex-column justify-content-center linkstyle text-dark'>
