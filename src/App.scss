@@ -33,7 +33,7 @@ code {
   box-shadow: 5px 5px 5px #000;
 }
 
-.radius-login {
+.radius2 {
   border-radius: 2rem;
 }
 
@@ -46,7 +46,7 @@ code {
 }
 
 .white {
-  color: #fff;
+  color: #fff!important;
 }
 
 .redirectLink {
@@ -54,6 +54,14 @@ code {
   &:hover {
     color: #fff;
   }
+}
+
+.postsShadow {
+  box-shadow: 10px 10px 10px #000;
+}
+
+.mb2 {
+  margin-bottom: 2rem;
 }
 
 .linkstyle {
@@ -87,6 +95,19 @@ code {
     box-shadow: 
       inset -6em 0 0 0 #2447ED,
       inset 6em 0 0 0 #2447ED;  
+  }
+}
+
+.bg-post-button {
+  background-color: #FF7F00;
+  color: #ffffff;
+  border-radius: 2rem;
+  transition: 500ms;
+  
+  &:hover {
+    box-shadow: 
+      inset -20em 0 0 0 #2447ED,
+      inset 20em 0 0 0 #2447ED;  
   }
 }
 

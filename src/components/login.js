@@ -101,7 +101,7 @@ class Login extends Component {
 
                 <h1 className='text-center w-100 py-3 mb-5 header'> <img src={logo} alt='logo groupomania'/> </h1>
                 <h2 className='mb-5 white'> Connectez-vous : </h2>
-                <form className='mb-5 radius-login py-3 col-10 col-lg-4 offset-1 offset-lg-4 bg-login'>
+                <form className='mb-5 radius2 py-3 col-10 col-lg-4 offset-1 offset-lg-4 bg-login'>
                     <label className='col' for='email'>
                     Adresse mail :
                     </label>
