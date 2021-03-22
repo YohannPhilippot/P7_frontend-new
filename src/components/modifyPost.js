@@ -108,37 +108,38 @@ class Post extends Component {
 
         return(
             <div>
-                <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+                <Navbar className='header py-3' expand="lg" sticky="top">
                     <Navbar.Brand href="/posts/allPosts"><img src={logo} alt='logo groupomania'/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ml-auto">
-                            <Nav.Link href={'/users/' + userId}>Mon Compte</Nav.Link>
-                            <Nav.Link onClick={this.handleDisconnect} href="/">Déconnexion</Nav.Link>
+                            <Nav.Link className='white' href={'/users/' + userId}>Mon Compte</Nav.Link>
+                            <Nav.Link className='white' onClick={this.handleDisconnect} href="/">Déconnexion</Nav.Link>
                         </Nav> 
                     </Navbar.Collapse>
                 </Navbar>
-                <h1 className='col col-lg-6 offset-lg-3 text-center my-3'>Modifier la publication</h1>
-                <form className="mt-5 col-lg-6 offset-lg-3 titleAuthor shadow-lg py-2" key={this.state.post.id}>
+                <div className='loginpage borderBlack'>
+                    <h1 className='col col-lg-6 offset-lg-3 text-center py-3 white'>Modifier la publication</h1>
+                    <form className="mt-2 col-lg-6 offset-lg-3 titleAuthor postsShadow py-2 radius2" key={this.state.post.id}>
 
-                    <label className='title col-6 offset-3 pt-3'> Titre </label>
-                    <input className='col-10 offset-1 col-lg-6 offset-lg-3' onChange={this.handleChange} type='text' id='title' defaultValue={this.state.post.title}/>
+                        <label className='title col-6 offset-3 pt-3'> Titre </label>
+                        <input className='col-10 offset-1 col-lg-6 offset-lg-3 radius2 inputBorder' onChange={this.handleChange} type='text' id='title' defaultValue={this.state.post.title}/>
 
-                    <label className='postContent col-6 offset-3 pt-3'>Contenu de la publication</label>
-                    <textarea className='col-10 offset-1 col-lg-6 offset-lg-3' onChange={this.handleChange} type='text' id='content' defaultValue={this.state.post.content}/>
+                        <label className='postContent col-6 offset-3 pt-3'>Contenu de la publication</label>
+                        <textarea className='col-10 offset-1 col-lg-6 offset-lg-3 radius2 inputBorder' onChange={this.handleChange} type='text' id='content' defaultValue={this.state.post.content}/>
 
-                    <label className='medias col-6 offset-3 pt-3'>Medias</label>
-                    <input className='col-10 offset-1 col-lg-6 offset-lg-3' onChange={this.handleChange} type='text' id='medias' defaultValue={this.state.post.medias}/>
-                    <form encType='multipart/form-data' method='post'>
-                        <input className='col-4 col-lg-6 offset-1 offset-md-3 mt-4' onChange={this.handleFileChange} type='file' name='file' id='medias'/>
+                        <label className='medias col-6 offset-3 pt-3'>Medias</label>
+                        <input className='col-10 offset-1 col-lg-6 offset-lg-3 radius2 inputBorder' onChange={this.handleChange} type='text' id='medias' defaultValue={this.state.post.medias}/>
+                        <form encType='multipart/form-data' method='post'>
+                            <input className='col-4 col-lg-6 offset-1 offset-md-3 mt-4' onChange={this.handleFileChange} type='file' name='file' id='medias'/>
+                        </form>
+                        
+                        <button className='col-6 offset-3 my-5 bg-button bg-button--confirm radius2' onClick={this.handleClick} type='button'>
+                            Modifier la publication 
+                        </button>
+                        
                     </form>
-                    
-                    <button className='col-6 offset-3 my-5 bg-button rounded' onClick={this.handleClick} type='button'>
-                        Modifier la publication 
-                    </button>
-                    
-                </form>
-
+                </div>
 
             </div>
         )
